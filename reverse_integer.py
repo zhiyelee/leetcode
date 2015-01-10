@@ -1,25 +1,13 @@
 class Solution:
     # @return an integer
     def reverse(self, x):
-        sym = ''
-        # strip right 0 for reverse
-        sx = str(x).rstrip('0')
+        sign = 1
+        if x < 0:
+            sign = -1
 
-        if len(sx) == 1:
-            return int(sx)
-        elif len(sx) == 0:
-            return 0
-        else:
-            l = list(sx)
-            first = l[0]
-            if not first.isdigit():
-                l = l[1:]
-                sym = first
-            res = int(sym + ''.join(list(reversed(l))))
-            import sys
-            if res > sys.maxint:
-                res = 0
-            return res
+        strx = str(abs(x))
+        res = strx[::-1]
+        return sign*int(res)
 
 
 
