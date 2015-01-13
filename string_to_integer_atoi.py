@@ -13,7 +13,6 @@ class Solution:
         elif str[0] == '+':
             str = str[1:]
 
-        print str
         lens = len(str)
         if lens == 0:
             return 0
@@ -21,7 +20,6 @@ class Solution:
 
         s = ''
         for i in range(0, lens):
-            print str[i], str[i].isdigit()
             if str[i].isdigit():
                 s = s + str[i]
             else:
@@ -42,10 +40,10 @@ class Solution:
 
 s = Solution()
 
-# assert s.atoi('') == 0
-# assert s.atoi('aaa') == 0
-# assert s.atoi('1213fa ') == 1213
-# assert s.atoi('+1213fa') == 1213
-# assert s.atoi('-1213fa') == -1213
-# assert s.atoi('2147483648') == 2147483647
+assert s.atoi('') == 0
+assert s.atoi('aaa') == 0
+assert s.atoi('1213fa ') == 1213
+assert s.atoi('+1213fa') == 1213
+assert s.atoi('-1213fa') == -1213
+assert s.atoi('2147483648') == 2147483647
 assert s.atoi('+-2') == 0
