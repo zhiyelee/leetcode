@@ -10,7 +10,7 @@ class Solution:
         ls = 0
         sls = 0
         sidx = 0
-        for i in range(0, lenS):
+        for i in range(lenS):
             val = s[i]
 
             if val in d:
@@ -26,7 +26,7 @@ class Solution:
 
         return ls
     def clearD(self, d, s):
-        for i in range(0, len(s)):
+        for i in range(len(s)):
             del d[s[i]]
 
         return d

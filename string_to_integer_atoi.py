@@ -19,7 +19,7 @@ class Solution:
 
 
         s = ''
-        for i in range(0, lens):
+        for i in range(lens):
             if str[i].isdigit():
                 s = s + str[i]
             else:
