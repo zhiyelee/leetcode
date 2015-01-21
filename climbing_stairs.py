@@ -13,9 +13,9 @@ class Solution:
 
 # test
 s = Solution()
-#assert s.climbStairs(1)  == 1
-#assert s.climbStairs(2)  == 2
-#assert s.climbStairs(3)  == 3
-#assert s.climbStairs(4)  == 5
-#assert s.climbStairs(5)  == 8
+assert s.climbStairs(1)  == 1
+assert s.climbStairs(2)  == 2
+assert s.climbStairs(3)  == 3
+assert s.climbStairs(4)  == 5
+assert s.climbStairs(5)  == 8
 assert s.climbStairs(6)  == 13
