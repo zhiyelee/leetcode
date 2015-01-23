@@ -5,12 +5,19 @@ class Solution:
         if (n == 1):
             return 1
         count = 0
+        d = {}
         for i in range(n + 1):
             m = n - i
             if m == 0:
                 count += 1
             elif m % 2 == 0:
-                count += self.getAn_m(i, m/2)
+                key = str(i) + '_' + str(m)
+                if key in d:
+                    val = d[key]
+                else:
+                    val = self.getAn_m(i, m/2)
+
+                count += val
 
         return count
 
