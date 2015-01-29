@@ -12,26 +12,29 @@ class Solution:
 
         d = {}
 
-        current =  head
-        l = 0
+        current = head
+        # the length of the list
+        lens = 0
         while current:
-            d[l] = current
+            d[lens] = current
             current = current.next
-            l += 1
+            lens += 1
 
-        if n == 0:
-            d[l - 1].next = None
-            return head
-        elif n > l:
-            return head
-        elif n == l:
-            if l == 1:
+        # remove the tail node
+        if n == lens:
+            if lens == 1:
                 return None
             else:
                 return d[1]
-        elif n < l:
-            idx = l - n
-            d[idx - 1].next = d[idx].next
+
+        if n == 0:
+            d[lens - 1].next = None
+        # remove the `head` node
+        elif n > lens:
             return head
+        elif n < lens:
+            idx = lens - n
+            d[idx - 1].next = d[idx].next
+        return head
 
 
