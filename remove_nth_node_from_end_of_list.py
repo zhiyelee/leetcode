@@ -1,9 +1,3 @@
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
 class Solution:
     # @return a ListNode
     def removeNthFromEnd(self, head, n):
@@ -11,30 +5,29 @@ class Solution:
             return head
 
         d = {}
+        d[0] = ListNode(0)
 
         current = head
         # the length of the list
-        lens = 0
+        lens = 1
         while current:
-            d[lens] = current
+            d[lens - 1].next = d[lens] = current
             current = current.next
             lens += 1
 
-        # remove the tail node
-        if n == lens:
-            if lens == 1:
-                return None
-            else:
-                return d[1]
+        lens -= 1
 
         if n == 0:
-            d[lens - 1].next = None
-        # remove the `head` node
-        elif n > lens:
-            return head
-        elif n < lens:
-            idx = lens - n
+            d[lens-1].next = None
+        elif n <= lens:
+            idx = lens - n + 1
             d[idx - 1].next = d[idx].next
-        return head
+        return d[0].next
 
+
+# test
+from _util import *
+s =  Solution()
+r = s.removeNthFromEnd(a2ll([1,2]), 1)
+pl(r)
 
