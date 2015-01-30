@@ -15,8 +15,7 @@ def a2ll(l):
 
     return ll
 def pl(ll):
-    while ll.next:
+    while ll:
         print ll.val,
         ll = ll.next
-    print ll.val
-
+    print
