@@ -6,12 +6,13 @@ class Solution:
 
         d = {}
         d[0] = ListNode(0)
+        d[0].next = head
 
         current = head
         # the length of the list
         lens = 1
         while current:
-            d[lens - 1].next = d[lens] = current
+            d[lens] = current
             current = current.next
             lens += 1
 
@@ -30,4 +31,3 @@ from _util import *
 s =  Solution()
 r = s.removeNthFromEnd(a2ll([1,2]), 1)
 pl(r)
-
