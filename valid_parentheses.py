@@ -12,7 +12,8 @@ class Solution:
             ')': '(',
         }
 
-        if s[0] in rightSets:
+        # check first char, avoid check range for stack[-1] later
+        if s[0] not in leftSets:
             return False
 
         stack = []
