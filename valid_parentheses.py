@@ -17,24 +17,23 @@ class Solution:
             return False
 
         stack = []
-
         for i in range(lens):
             val = s[i]
             if val in leftSets:
                 stack.append(val)
+            # pop corresponding parentheses of the stack
             elif val in rightSets and rightSets[val] == stack[len(stack) - 1]:
                 stack.pop()
             else:
                 return False
 
+        # after the iteration, check whether the stack is empty
         if len(stack) != 0:
             return False
         return True
 
 s = Solution()
 assert s.isValid('[[[{{}}]]]') == True
-assert s.isValid('[[[{}}]]]') == False
+assert s.isValid('{}}') == False
 assert s.isValid('[[') == False
 assert s.isValid('][') == False
-
-
