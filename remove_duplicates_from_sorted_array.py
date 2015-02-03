@@ -7,7 +7,8 @@ class Solution:
         val = None
         while i < len(A):
             if val == A[i]:
-                A.pop(i)
+                # A.pop(i)
+                A[i-1:i+1] = [A[i-1]]
             else:
                 val = A[i]
                 i += 1
