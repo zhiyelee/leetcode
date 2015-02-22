@@ -8,6 +8,15 @@ class Solution:
         arr = []
         self.g(n, 0, 0, '', arr)
         return arr
+
+     ##
+     # generate
+     # @param n the length of the pairs
+     # @param `left` the length the the left parentheses `(`
+     # @param `right` the length the the right parentheses `)`
+     # @param `s` current string of parentheses
+     # @param `arr` list of the pairs
+     ##
     def g(self, n, left, right, s, arr):
         if left < right:
             return
