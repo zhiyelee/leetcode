@@ -7,9 +7,9 @@ class Solution:
 
         res = []
         for i in range(l):
-            for j in range(1, l):
-                for k in range(2, l):
-                    if num[i] + num[j] + num[k] == 0 and num[i] <= num[j] and num[j] <= num[k] and i !=j and j != k:
+            for j in range(i + 1, l):
+                for k in range(i + 2, l):
+                    if num[i] + num[j] + num[k] == 0 and num[i] <= num[j] and num[j] <= num[k]:
 
                         item = [num[i], num[j], num[k]]
                         if item not in res:
