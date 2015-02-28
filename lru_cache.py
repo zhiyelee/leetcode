@@ -10,14 +10,19 @@ class LRUCache:
     # @return an integer
     def get(self, key):
         if key in self.store:
-            for i in range(len(self.q)):
-                if self.q[i] == key:
-                    break
-            self.q.pop(i)
-            self.q.append(key)
+            self.lifttofirst(key)
             return self.store[key]
         else:
             return -1
+
+    def lifttofirst(self, key):
+        # q[i] <==> q[end]
+        for i in range(len(self.q)):
+            if self.q[i] == key:
+                break
+        self.q.pop(i)
+        self.q.append(key)
+
 
 
     # @param key, an integer
@@ -25,15 +30,12 @@ class LRUCache:
     # @return nothing
     def set(self, key, value):
         if key in self.store:
-            for i in range(len(self.q)):
-                if self.q[i] == key:
-                    break
-            self.q.pop(i)
+            self.lifttofirst(key)
         else:
             if len(self.q) == self.capacity:
                 discard = self.q.pop(0)
                 del self.store[discard]
-        self.q.append(key)
+            self.q.append(key)
         self.store[key] = value
 
 
