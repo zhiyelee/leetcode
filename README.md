@@ -1,2 +1,6 @@
 # leetcode
-Solution to leetcode
+
+Solutions to leetcode in JavaScript and Python.
+
+## LICENSE
+MIT
