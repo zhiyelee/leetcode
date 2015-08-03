@@ -10,6 +10,11 @@ var isPowerOfTwo = function(n) {
 };
 
 
+// method 2
+// bit manipulation
+var isPowerOfTwo = function(n) {
+  return n >0  && (n & (n-1) === 0);
+};
 var eq = require('assert').equal;
 
 eq(isPowerOfTwo(2), true);
