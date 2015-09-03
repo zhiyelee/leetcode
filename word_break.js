@@ -4,27 +4,21 @@
  * @return {boolean}
  */
 var wordBreak = function(s, wordDict) {
-  dict = [];
-  for (var v of wordDict) {
-    dict.push(v);
-  }
+  s = '#' + s;
+  var dp = [true];
 
-  return isMatch(s, dict, 0);
-};
-
-function isMatch(s, dict, idx) {
-  var sl = s.length;
-  if (idx === sl) return true;
-
-  for (var i = 0; i < dict.length; i++) {
-    var val = dict[i];
-    if (s.indexOf(val, idx) === idx) {
-      if (isMatch(s, dict, idx + val.length)) return true;
+  for (var i = 1; i < s.length; i ++) {
+    for (var k = 0; k < i; k ++) {
+      if (dp[k] && wordDict.has(s.substr(k + 1, i-k))) {
+        dp[i] = true;
+        break;
+      }
     }
   }
 
-  return false;
-}
+  return !!dp[s.length - 1]
+};
+
 
 
 var eq = require('assert').equal;
