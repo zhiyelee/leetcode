@@ -26,43 +26,34 @@
 // };
 
 // hash solution
-var hIndex = function(cs) {
+var hIndex = function(citations) {
   var possible = [];
-  if (cs.length === 0) return 0;
+  var len = citations.length;
+  if (len === 0) return 0;
 
   // possible array length = cs.length + 1, 0 - cs.length
-  possible.length = cs.length + 2;
+  possible.length = len + 2;
   possible = possible.join('-').split('').map(function() {
     return 0;
   });
 
-  for (var i = 0; i < cs.length; i ++) {
-    var val = cs[i];
-    possibleAdd(possible, val);
+  for (var i = 0; i < len; i ++) {
+    var val = citations[i];
+    var idx = val > len ? len : val;
+
+    possible[idx] += 1;
   }
 
-  return Math.max.apply(null, possible);
-}
+  console.log(possible)
 
-// [4,4,4,4]
-// [0, 0, 0 , 0, 0]
-function possibleAdd(arr, val) {
-  var i = 0;
-  while (i < arr.length) {
-    // possible[i] == min(i, val)
-    //if (val > i && val > arr[i]) {
-    //  arr[i] += 1;
-    //}
-    console.log(i,val)
-    if (val > arr[i]) {
-      arr[i] = Math.min(i, arr[i] + 1);
+  var result = 0;
+  for (var k = len; k >= 0; k --) {
+    result += possible[k];
+    if (result >= k) {
+      return k;
     }
-
-    i++;
   }
-  console.log(arr)
 }
-
 
 var eq = require('assert').equal;
 
@@ -72,4 +63,3 @@ eq(hIndex([2, 2, 2]), 2);
 eq(hIndex([3, 0, 6, 1, 5]), 3);
 eq(hIndex([5, 4, 6, 1, 5]), 4);
 eq(hIndex([5, 6]), 2);
-
