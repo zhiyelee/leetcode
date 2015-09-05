@@ -31,8 +31,9 @@ var hIndex = function(citations) {
   var len = citations.length;
   if (len === 0) return 0;
 
-  // possible array length = cs.length + 1, 0 - cs.length
+  // possible array length = citations.length + 1, 0 - citations.length
   possible.length = len + 2;
+  // fill with 0
   possible = possible.join('-').split('').map(function() {
     return 0;
   });
@@ -43,8 +44,6 @@ var hIndex = function(citations) {
 
     possible[idx] += 1;
   }
-
-  console.log(possible)
 
   var result = 0;
   for (var k = len; k >= 0; k --) {
