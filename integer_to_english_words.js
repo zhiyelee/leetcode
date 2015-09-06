@@ -6,13 +6,15 @@ var numberToWords = function(num) {
   var quantityHash = ['', 'Thousand', 'Million', 'Billion'];
 
   if (num === 0) return 'Zero';
+
+  // separate num into 3-nums parts
+  var parts = [];
   num = num.toString().split('');
-  var numArr = [];
   while (num.length) {
-    numArr.push(num.splice(-3, 3));
+    parts.push(num.splice(-3, 3));
   }
 
-  return numArr.reduce(function (pre, item, index) {
+  return parts.reduce(function (pre, item, index) {
     var words = say(item);
     var q = quantityHash[index];
 
@@ -51,10 +53,10 @@ function say(num) {
   var res = [];
   var item;
 
-  num = ('000' + num).substr(-3, 3);
+  num = ('000' + num).substr(-3, 3).split('');
 
   // hundred
-  item = num.charAt(0);
+  item = num[0];
   if (item !== '0') {
     res.push(numWords[item] + ' Hundred');
   }
@@ -63,15 +65,18 @@ function say(num) {
   var skipOne = false;
   var val = '';
   var prefix = '';
-  item = num.charAt(1);
+  item = num[1];
+  var lastTwo;
   if (item !== '0') {
-    if (hash[num.substr(1)]) {
+    lastTwo = num.join('').substr(1);
+    if (hash[lastTwo]) {
       skipOne = true;
-      val = hash[num.substr(1)];
+      val = hash[lastTwo];
     } else {
       if (item === '1') {
-        prefix = numWords[parseInt(num.charAt(2))];
         skipOne = true;
+        // when 14, 16 etc, check the 4, 6
+        prefix = numWords[parseInt(num[2])];
         val = prefix + 'teen';
       } else {
         prefix = numWords[parseInt(item)];
@@ -84,7 +89,7 @@ function say(num) {
   }
 
   // one
-  item = num.charAt(2);
+  item = num[2];
   if (item !== '0' && !skipOne) {
     res.push(numWords[parseInt(item)]);
   }
