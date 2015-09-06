@@ -62,14 +62,11 @@ function say(num) {
   // decade
   var skipOne = false;
   var val = '';
-  var prefix = '';
   item = num[1];
-  var lastTwo;
   if (item !== '0') {
-    lastTwo = num.join('').substr(1);
     if (item === '1') {
       skipOne = true;
-      val = hash[lastTwo];
+      val = hash[num.join('').substr(1)];
     } else {
       val = tenHash[parseInt(item)];
     }
