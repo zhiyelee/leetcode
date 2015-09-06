@@ -7,13 +7,11 @@ var isHappy = function(n) {
 
   while (true) {
     var arr = n.toString().split('');
-    console.log(arr)
 
     n = arr.reduce(function (pre, current) {
       current = parseInt(current);
       return pre + current * current;
-    }, 0)
-    console.log(n)
+    }, 0);
 
     if (n === 1) return true;
     if (mem.indexOf(n) !== -1) {
