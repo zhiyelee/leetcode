@@ -36,7 +36,6 @@ function say(num) {
     '11': 'Eleven',
     '12': 'Twelve',
     '13': 'Thirteen',
-    '14': 'Fourteen',
     '15': 'Fifteen',
     '18': 'Eighteen'
   };
