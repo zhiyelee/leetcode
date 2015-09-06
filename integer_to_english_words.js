@@ -38,17 +38,15 @@ function say(num) {
     '11': 'Eleven',
     '12': 'Twelve',
     '13': 'Thirteen',
+    '14': 'Fourteen',
     '15': 'Fifteen',
-    '18': 'Eighteen'
+    '16': 'Sixteen',
+    '17': 'Seventeen',
+    '18': 'Eighteen',
+    '19': 'Nineteen'
   };
 
-  var tenHash = {
-    '2': 'Twen',
-    '3': 'Thir',
-    '4': 'For',
-    '5': 'Fif',
-    '8': 'Eigh'
-  };
+  var tenHash = [ '', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 
   var res = [];
   var item;
@@ -69,20 +67,11 @@ function say(num) {
   var lastTwo;
   if (item !== '0') {
     lastTwo = num.join('').substr(1);
-    if (hash[lastTwo]) {
+    if (item === '1') {
       skipOne = true;
       val = hash[lastTwo];
     } else {
-      if (item === '1') {
-        skipOne = true;
-        // when 14, 16 etc, check the 4, 6
-        prefix = numWords[parseInt(num[2])];
-        val = prefix + 'teen';
-      } else {
-        prefix = numWords[parseInt(item)];
-        prefix = tenHash[item] || prefix;
-        val = prefix + 'ty';
-      }
+      val = tenHash[parseInt(item)];
     }
 
     res.push(val);
