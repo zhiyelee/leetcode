@@ -12,9 +12,6 @@ var searchInsert = function(nums, target) {
   var r = nums.length - 1;
 
   if (len === 0) return 0;
-  if (target <= nums[0]) return 0;
-  if (target > nums[len - 1]) return len;
-
 
   var mid;
   while (l <= r) {
