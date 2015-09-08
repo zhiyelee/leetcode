@@ -5,20 +5,20 @@
 var mySqrt = function(x) {
   var low = 0;
   var high = x;
-  var sq;
   var pre;
   if (x === 0) return 0;
 
   while (low <= high) {
-    var i = Math.floor((high + low)/2);
-    sq = i * i;
-    if (sq === x)  return i;
+    var mid = low + ((high - low) >> 1);
 
-    if (sq > x) {
-      high = i - 1;
+    // in case of overflow, use below instead of mid * mid
+    if (mid === x / mid)  return mid;
+
+    if (mid > x / mid) {
+      high = mid - 1;
     } else {
-      pre = i;
-      low = i + 1;
+      pre = mid;
+      low = mid + 1;
     }
   }
 
@@ -27,6 +27,7 @@ var mySqrt = function(x) {
 
 
 var eq = require('assert').equal;
+eq(mySqrt(1), 1);
 eq(mySqrt(5), 2);
 eq(mySqrt(4), 2);
 eq(mySqrt(11), 3);
