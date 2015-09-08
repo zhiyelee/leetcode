@@ -3,29 +3,68 @@
  * @param {number} target
  * @return {number[]}
  */
+//  // binary search solution O(n*n)
+//  var twoSum = function(numbers, target) {
+//    var low;
+//    var high;
+//    var mid;
+//
+//    for (var i = 0; i < numbers.length; i ++) {
+//      low =  i + 1;
+//      high = numbers.length - 1;
+//
+//      while(low <= high) {
+//        mid = low + ((high - low) >> 1);
+//        var val = numbers[i] + numbers[mid];
+//
+//        if (val === target) return [i + 1, mid + 1];
+//
+//        if (val > target) {
+//          high = mid - 1;
+//        } else {
+//          low = low + 1;
+//        }
+//      }
+//    }
+//  };
+
+// two-pointer O(n) solution
+//  var twoSum = function(numbers, target) {
+//    var len = numbers.length;
+//    var low = 0;
+//    var high = len - 1;
+//    var val;
+//    while (low < high) {
+//      val = numbers[low] + numbers[high];
+//      if (val === target) {
+//        break;
+//      }
+//
+//      if(val > target) {
+//        high = high - 1;
+//      } else {
+//        low = low + 1;
+//      }
+//
+//    }
+//
+//    return [low+ 1, high + 1]
+//  }
+
+// use hash, O(n)
 var twoSum = function(numbers, target) {
-  var low;
-  var high;
-  var mid;
+  var dict = {};
 
-  for (var i = 0; i < numbers.length; i ++) {
-    low =  i + 1;
-    high = numbers.length - 1;
-
-    while(low <= high) {
-      mid = low + ((high - low) >> 1);
-      var val = numbers[i] + numbers[mid];
-
-      if (val === target) return [i + 1, mid + 1];
-
-      if (val > target) {
-        high = mid - 1;
-      } else {
-        low = low + 1;
-      }
+  var num;
+  for (var i = 0; i < numbers.length; i++) {
+    num = numbers[i];
+    if (dict[target - num] !== undefined) {
+      return [dict[target - num] + 1, i + 1]
     }
+
+    dict[num] = i;
   }
-};
+}
 
 var eq = require('assert').deepEqual;
 
