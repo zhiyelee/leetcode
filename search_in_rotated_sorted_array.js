@@ -34,6 +34,35 @@ var search = function(nums, target) {
   return -1;
 };
 
+// another version, logic is much simpler
+var search = function(nums, target) {
+  var len = nums.length;
+  var low = 0;
+  var high = len - 1;
+
+  while(low <= high) {
+    mid = low + ((high - low) >> 1);
+    var midVal = nums[mid];
+
+    if (midVal === target) return mid;
+
+    if (nums[low] <= midVal) {
+      if (target >= nums[low] && target < midVal) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+    } else {
+      if (target <= nums[high] && target > midVal) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+  }
+
+  return  -1;
+};
 var eq = require('assert').equal;
 
 eq(search([4, 5, 6, 7, 0, 1, 2], 6), 2);
