@@ -2,6 +2,7 @@
  * @param {string} str
  * @returns {string}
  */
+// O(n) space
 var reverseWords = function(str) {
   var words = str.trim().split(/\s+/);
 
