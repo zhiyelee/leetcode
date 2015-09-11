@@ -5,33 +5,53 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
+//  var merge = function(nums1, m, nums2, n) {
+//    // only keep m items
+//    nums1.splice(m, nums1.length - m);
+//
+//    var low = 0;
+//    var high;
+//    var mid;
+//    for (var i = 0; i < n; i++) {
+//      high = m - 1;
+//      while (low <= high) {
+//        mid = low + ((high - low) >> 1);
+//
+//        if (nums2[i] === nums1[mid]) {
+//          low = mid;
+//        }
+//        if(nums2[i] < nums1[mid]) {
+//          high = mid - 1;
+//        } else {
+//          low = mid + 1;
+//        }
+//      }
+//
+//      nums1.splice(low, 0, nums2[i]);
+//      low += 1;
+//      m++;
+//    }
+//  };
+
+//a much clever solution!!!
 var merge = function(nums1, m, nums2, n) {
-  // only keep m items
-  nums1.splice(m, nums1.length - m);
+  var i = m - 1;
+  var j = n - 1;
+  var k = m + n - 1;
 
-  var low = 0;
-  var high;
-  var mid;
-  for (var i = 0; i < n; i++) {
-    high = m - 1;
-    while (low <= high) {
-      mid = low + ((high - low) >> 1);
-
-      if (nums2[i] === nums1[mid]) {
-        low = mid;
-      }
-      if(nums2[i] < nums1[mid]) {
-        high = mid - 1;
-      } else {
-        low = mid + 1;
-      }
+  while (i >= 0 && j >= 0) {
+    if (nums1[i] > nums2[j]) {
+      nums1[k--] = nums1[i--];
+    } else {
+      nums1[k--] = nums2[j--];
     }
-
-    nums1.splice(low, 0, nums2[i]);
-    low += 1;
-    m++;
   }
-};
+
+  while(j >= 0) {
+    nums1[k--] = nums2[j--];
+  }
+}
+
 
 var eq = require('assert').deepEqual;
 
