@@ -28,7 +28,7 @@
 //    }
 //  };
 
-// two-pointer O(n) solution
+// two-pointer O(n) time , O(1) space
 //  var twoSum = function(numbers, target) {
 //    var len = numbers.length;
 //    var low = 0;
