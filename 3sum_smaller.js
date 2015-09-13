@@ -18,12 +18,7 @@ var threeSumSmaller = function(nums, target) {
     while(low < high) {
       var sum = nums[low] + nums[high];
       if (sum + val < target) {
-        ans ++;
-        var k = high - 1;
-        while (low < k) {
-          ans ++;
-          k --;
-        }
+        ans +=  high - low;
         low ++;
       } else {
         high --;
