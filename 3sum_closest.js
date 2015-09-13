@@ -11,29 +11,23 @@ var threeSumClosest = function(nums, target) {
 
   var len = nums.length;
   var min = nums[0] + nums[1] + nums[2];
-  var minDiff = Math.abs(min - target);
   // suppose length must >= than 3
   if (nums.length === 3) return min;
 
   for (var i = 0; i < len; i++) {
-    var find = target - nums[i];
-
     // two pointer, narrow to find the target
     var low = i + 1;
     var high = len - 1;
 
     while(low < high) {
-      var sum = nums[low] + nums[high];
-      var diff = Math.abs(sum - find);
+      var sum = nums[low] + nums[high] + nums[i];
 
-      if (diff === 0) return target;
-
-      if (diff < minDiff) {
-        min = sum + nums[i];
-        minDiff = diff;
+      if (Math.abs(sum - target) < Math.abs(min - target)) {
+        min = sum;
+        if (sum === target) return target;
       }
 
-      if(sum < find) {
+      if(sum < target) {
         low += 1;
       } else {
         high = high - 1;
