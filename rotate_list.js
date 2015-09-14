@@ -11,30 +11,28 @@
  * @return {ListNode}
  */
 var rotateRight = function(head, k) {
-  var len = 0;
+  if (!head) return head;
 
-  var it = head;
-  var end;
-  while (it) {
+  var tail = head;
+  var len = 1;
+  while (tail.next) {
     len ++;
-    end = it;
-    it = it.next;
+    tail = tail.next;
   }
 
   // right rotate k = left rotate len - k
-
   k =  k % len;
   if (k === 0) return head;
 
-  var i = 0;
-  while (head && i < (len - k)) {
-    var tmp = head.next;
-    end.next = head;
-    head.next = null;
-    end = head;
-    head = tmp;
-    i ++;
+  // circle the link list
+  tail.next = head;
+
+  for (var i = 0; i < (len - k); i++) {
+    tail = tail.next;
   }
+
+  head = tail.next;
+  tail.next = null;
 
   return head;
 };
