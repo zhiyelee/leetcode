@@ -15,18 +15,12 @@ var removeElements = function(head, val) {
   dummy.next = head;
   head = dummy;
 
-  var tmp;
-  var slow;
-  while(head) {
-    if (head.val === val) {
-      tmp = head.next;
-      slow.next = tmp;
-      head = tmp;
+  while(head && head.next) {
+    if (head.next.val === val) {
+      head.next = head.next.next;
     } else {
-      slow = head;
       head = head.next;
     }
-
   }
 
   return dummy.next;
