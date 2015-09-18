@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {boolean}
  */
+// use some
 var containsDuplicate = function(nums) {
   var hash = {};
 
@@ -9,6 +10,10 @@ var containsDuplicate = function(nums) {
     if (hash[val]) return true;
     hash[val] = 1;
   });
+};
+
+var containsDuplicate = function(nums) {
+  return nums.length > (new Set(nums)).size;
 };
 
 
