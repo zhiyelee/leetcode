@@ -13,7 +13,7 @@ var longestPalindrome = function(s) {
 
   for (var i = 0; i < length - 1; i ++) {
     // abba pattern
-    var even = getLen(s, i, i + 1);
+    var even = getSub(s, i, i + 1);
     // aba pattern
     var odd = getLen(s, i - 1, i + 1)
     odd[0] += 1;
@@ -30,7 +30,7 @@ var longestPalindrome = function(s) {
 
 // find longest palindrome
 // left and right is the start point to search two direction
-function getLen(s, left, right) {
+function getSub(s, left, right) {
   var length = s.length;
   var len = 0;
   while (left >= 0 && right <= length - 1) {
