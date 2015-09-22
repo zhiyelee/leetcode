@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// a genius solution, check http://is.gd/j5nJsb
 var majorityElement = function(nums) {
   var major;
   var count = 0;
