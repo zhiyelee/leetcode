@@ -15,7 +15,7 @@ var longestPalindrome = function(s) {
     // abba pattern
     var even = getSub(s, i, i + 1);
     // aba pattern
-    var odd = getLen(s, i - 1, i + 1)
+    var odd = getSub(s, i - 1, i + 1)
     odd[0] += 1;
 
     var tmp = even[0] > odd[0] ? even : odd;
