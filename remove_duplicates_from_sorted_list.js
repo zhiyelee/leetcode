@@ -22,18 +22,22 @@ var deleteDuplicates = function(head) {
     } else {
       pre = current;
       hash.add(val);
-      console.log(hash.keys(), val)
     }
 
     current = current.next;
   }
 
-  console.log(hash.values())
+  return head;
 };
 
 var eq = require('assert').deepEqual;
 var nodeList = require('./_util').nodeList;
+var l;
 
-var l = nodeList.create([1, 2, 2, 1, 3]);
-deleteDuplicates(l);
-eq(nodeList.toArray(l), [1,2,3]);
+l = nodeList.create([1, 2, 2, 1, 3]);
+eq(nodeList.toArray(deleteDuplicates(l)), [1,2,3]);
+
+l = nodeList.create([1, 1]);
+eq(nodeList.toArray(deleteDuplicates(l)), [1]);
+l = nodeList.create([]);
+eq(nodeList.toArray(deleteDuplicates(l)), []);
