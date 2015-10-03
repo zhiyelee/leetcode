@@ -25,6 +25,9 @@ var detectCycle = function(head) {
   }
   if (!slow || !fast) return null;
 
+  // when head is the loop start
+  if (slow === head) return head;
+
   var finder = head;
   while(true) {
      slow = slow.next;
