@@ -5,20 +5,19 @@
 var ValidWordAbbr = function(dictionary) {
   this.dict = dictionary;
   var hash = {};
+
   dictionary.forEach(function (d) {
     var len = d.length;
-    var val;
+    var abbr = d;
 
-    if (len <= 2) {
-      val = d;
-    } else {
-      val = d.charAt(0) + (len - 2) + d.charAt(len - 1);
+    if (len > 2) {
+      abbr = d.charAt(0) + (len - 2) + d.charAt(len - 1);
     }
 
-    if (hash[val]) {
-      hash[val].push(d);
+    if (hash[abbr]) {
+      hash[abbr].push(d);
     } else {
-      hash[val] = [d];
+      hash[abbr] = [d];
     }
   });
 
