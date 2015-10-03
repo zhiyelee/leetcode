@@ -3,12 +3,9 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-  var b = 0;
-  for (var i = 0; i < nums.length; i++) {
-    b ^= nums[i];
-  }
-
-  return b;
+  return nums.reduce(function (pre, curr) {
+    return pre ^ curr;
+  }, 0)
 };
 
 
