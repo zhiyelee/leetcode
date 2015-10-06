@@ -11,15 +11,13 @@ var wordPattern = function(pattern, str) {
   if (ph.length !== sh.length) return false;
   if (new Set(ph).size !== new Set(sh).size) return false;
 
-  for (var i = 0; i < ph.length; i++) {
-    var p = ph[i];
-    var s = sh[i];
+  var zip = new Set();
 
-    if (hash[p] && hash[p] !== s) return false;
-    if (!hash[p]) { hash[p] = s; }
-  }
+  ph.forEach(function (item, i) {
+    zip.add(ph[i] + ' ' + sh[i]);
+  });
 
-  return true;
+  return zip.size === new Set(ph).size;
 };
 
 
