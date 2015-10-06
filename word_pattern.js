@@ -9,20 +9,14 @@ var wordPattern = function(pattern, str) {
   var hash = {};
 
   if (ph.length !== sh.length) return false;
+  if (new Set(ph).size !== new Set(sh).size) return false;
 
   for (var i = 0; i < ph.length; i++) {
     var p = ph[i];
     var s = sh[i];
 
-    if (!hash[p]) {
-      var idx = sh.indexOf(s);
-      if (!(p in hash) && idx !== -1 && idx < i) {
-        return false;
-      }
-      hash[p] = s;
-    } else {
-      if (hash[p] !== s) return false;
-    }
+    if (hash[p] && hash[p] !== s) return false;
+    if (!hash[p]) { hash[p] = s; }
   }
 
   return true;
