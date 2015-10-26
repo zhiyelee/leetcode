@@ -22,10 +22,10 @@ var isSameTree = function(p, q) {
 
 
 var tree = require('./_util').tree;
-var util = require('util');
+var eq = require('assert').equal;
 
-//console.log(tree.createTree([1,null,2,3]))
-console.log(util.inspect(tree.createTree([5,4,7,3,null,2,null,-1,null,9]), {depth: 5, colors: true}))
-console.log(util.inspect(tree.createTree([1,2,3,null,null,4,null,null,5]), {depth: 5, colors: true}))
-console.log(util.inspect(tree.createTree([2,1,3,0,7,9,1,2,null,1,0,null,null,8,8,null,null,null,null,7]), {depth: 5, colors: true}))
+var t1 = tree.createTree([1,null,2,3])
+var t2 = tree.createTree([1,null,2,3])
+
+eq(isSameTree(t1, t2), true);
 
