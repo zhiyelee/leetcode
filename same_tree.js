@@ -21,11 +21,11 @@ var isSameTree = function(p, q) {
 };
 
 
-var tree = require('./_util').tree;
+var tree = require('leetcode').Tree;
 var eq = require('assert').equal;
 
-var t1 = tree.createTree([1,null,2,3])
-var t2 = tree.createTree([1,null,2,3])
+var t1 = tree.create([1,null,2,3])
+var t2 = tree.create([1,null,2,3])
 
 eq(isSameTree(t1, t2), true);
 
