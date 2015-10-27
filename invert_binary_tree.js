@@ -2,6 +2,7 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
+// solution 1: recursion
 var invertTree = function(root) {
 
   if (!root) return root;
@@ -12,6 +13,32 @@ var invertTree = function(root) {
 
   root.right = invertTree(left);
   root.left = invertTree(right);
+
+  return root;
+};
+
+invertTree = function(root) {
+
+  if (!root) return root;
+  var stack = [root];
+
+  var current;
+  var left;
+  var right;
+  while(stack.length) {
+    current = stack.pop();
+
+    if (!current) continue;
+
+    left = current.left;
+    right = current.right;
+
+    current.left = right;
+    current.right = left;
+
+    if (left) stack.push(left);
+    if (right) stack.push(right);
+  }
 
   return root;
 };
