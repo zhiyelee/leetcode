@@ -29,7 +29,7 @@ var deleteDuplicates = function(head) {
 };
 
 var eq = require('assert').deepEqual;
-var nodeList = require('./_util').nodeList;
+var nodeList = require('leetcode').List;
 var l;
 
 l = nodeList.create([1, 2, 2, 3]);
