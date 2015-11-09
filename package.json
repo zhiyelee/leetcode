@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "leetcode": "^1.0.0"
+    "leetcode": "^1.2.0"
   },
   "scripts": {
     "test": "make test"
