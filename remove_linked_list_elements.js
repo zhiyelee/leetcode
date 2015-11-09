@@ -28,7 +28,7 @@ var removeElements = function(head, val) {
 
 
 var eq = require('assert').deepEqual;
-var nodeList = require('./_util').nodeList;
+var nodeList = require('leetcode').List;
 
 var list = nodeList.create([1, 2, 3, 4, 4]);
 list = removeElements(list, 4);
