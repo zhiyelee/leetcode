@@ -33,6 +33,19 @@ function sub(n, m) {
 var eq = require('assert').deepEqual;
 
 eq(findStrobogrammatic(2), ["11","69","88","96"]);
-eq(findStrobogrammatic(4), ["11","69","88","96"]);
-//eq(findStrobogrammatic(3), ["101", '111', "69","88","96"]);
-eq(findStrobogrammatic(13), ["101", '111', "69","88","96"]);
+eq(findStrobogrammatic(3),
+   [
+     '101',
+     '609',
+     '808',
+     '906',
+     '111',
+     '619',
+     '818',
+     '916',
+     '181',
+     '689',
+     '888',
+     '986'
+   ]
+);
