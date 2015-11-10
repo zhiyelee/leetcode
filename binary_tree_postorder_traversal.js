@@ -28,6 +28,33 @@ var postorderTraversal = function(root) {
   return ans;
 };
 
+// version 2, more directly, same as preodre
+var postorderTraversal = function(root) {
+  if (!root) return [];
+
+  var stack = [root];
+  var ans = [];
+
+  while(stack.length) {
+    it = stack.pop();
+
+    if (it.val === null) continue;
+
+    ans.unshift(it.val);
+
+
+    if (it.left) {
+       stack.push(it.left);
+    }
+
+    if (it.right) {
+      stack.push(it.right)
+    }
+
+  }
+
+  return ans;
+};
 
 var Tree = require('leetcode').Tree;
 var eq = require('assert').deepEqual;
