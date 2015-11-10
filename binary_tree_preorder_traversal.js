@@ -12,16 +12,16 @@ var preorderTraversal = function(root) {
   var it;
   var ans = [];
   while(stack.length) {
-    it = stack.shift();
+    it = stack.pop();
     if (it.val === null) continue;
 
     ans.push(it.val);
 
     if (it.right) {
-      stack.unshift(it.right);
+      stack.push(it.right);
     }
     if (it.left) {
-       stack.unshift(it.left);
+       stack.push(it.left);
     }
 
   }

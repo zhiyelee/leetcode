@@ -34,14 +34,13 @@ var postorderTraversal = function(root) {
 
   var stack = [root];
   var ans = [];
+  var it;
 
   while(stack.length) {
     it = stack.pop();
 
     if (it.val === null) continue;
-
     ans.unshift(it.val);
-
 
     if (it.left) {
        stack.push(it.left);
@@ -50,7 +49,6 @@ var postorderTraversal = function(root) {
     if (it.right) {
       stack.push(it.right)
     }
-
   }
 
   return ans;
