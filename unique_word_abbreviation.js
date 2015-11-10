@@ -15,7 +15,9 @@ var ValidWordAbbr = function(dictionary) {
     }
 
     if (hash[abbr]) {
-      hash[abbr].push(d);
+      if (!~hash[abbr].indexOf(d)) {
+        hash[abbr].push(d);
+      }
     } else {
       hash[abbr] = [d];
     }
@@ -53,3 +55,5 @@ var v = new ValidWordAbbr([ "deer", "door", "cake", "card"  ]);
 eq(v.isUnique('dear'), false);
 eq(v.isUnique('cart'), true);
 eq(v.isUnique('cake'), true);
+v = new ValidWordAbbr(['a', 'a']);
+eq(v.isUnique('a'), true);
