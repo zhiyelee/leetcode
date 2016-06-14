@@ -3,9 +3,14 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-  // {
-  //  'a1e1t1': ['ate']
-  // }
+  /**
+   *  shape of dicts
+   *
+   *  {
+   *   'a1e1t1': ['ate', 'eat', 'tea']
+   *  }
+   *
+   * */
   var dicts = {};
   var arrs = [];
 
@@ -14,7 +19,7 @@ var groupAnagrams = function(strs) {
     var key = toKey(val);
 
     if (dicts[key]) {
-      dicts[key].push(val);
+      dicts[key] = insert(dicts[key], val);
     } else {
        arrs.push([val]);
 
@@ -22,10 +27,17 @@ var groupAnagrams = function(strs) {
     }
   }
 
-  return arrs.map(function(arr) {
-    return arr.sort();
-  });
+  return arrs;
 };
+
+// insert sort O(n^2)
+function insert(arr, str) {
+  var i = 0;
+  while (str > arr[i]) { i++; }
+
+  arr.splice(i, 0, str);
+  return arr;
+}
 
 function toKey(str) {
   var d = {};
