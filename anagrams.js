@@ -3,23 +3,15 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-  /**
-   *  shape of dicts
-   *
-   *  {
-   *   'a1e1t1': ['ate', 'eat', 'tea']
-   *  }
-   *
-   * */
   var dicts = {};
   var arrs = [];
 
   for (var i = 0; i < strs.length; i ++) {
     var val = strs[i];
-    var key = toKey(val);
+    var key = val.split('').sort().join('');
 
     if (dicts[key]) {
-      dicts[key] = insert(dicts[key], val);
+      dicts[key].push(val);
     } else {
        arrs.push([val]);
 
@@ -30,44 +22,12 @@ var groupAnagrams = function(strs) {
   return arrs;
 };
 
-// insert sort O(n^2)
-function insert(arr, str) {
-  var i = 0;
-  while (str > arr[i]) { i++; }
-
-  arr.splice(i, 0, str);
-  return arr;
-}
-
-function toKey(str) {
-  var d = {};
-  for (var i = 0; i < str.length; i ++) {
-    var k = str.charAt(i);
-
-    if (d[k]) {
-      d[k]++;
-    } else {
-      d[k] = 1;
-    }
-  }
-
-
-  var key = '';
-  for(var j = 97; j < 123; j ++) {
-    var c = String.fromCharCode(j);
-    if (!d[c]) continue;
-
-    key += c + d[c];
-  }
-
-  return key;
-}
-
 
 var eq = require('assert').deepEqual;
 
-eq(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']), [
-   ['ate', 'eat', 'tea'],
-   ['nat', 'tan'],
-   ['bat']
-]);
+// cant test with equal, since this problem doesn't require order inner group
+// eq(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']), [
+//    ['ate', 'eat', 'tea'],
+//    ['nat', 'tan'],
+//    ['bat']
+// ]);
