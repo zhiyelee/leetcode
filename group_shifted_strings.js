@@ -21,34 +21,25 @@ var groupStrings = function(strings) {
   return gs;
 };
 
-/**
- * serialize `str` to get it start with `a`
- * */
+//  encode string with distance of two adjacent charactors,
+//  return `-11-2` etc
 function getKey(str) {
-  if (str.charAt(0) == 'a') return str;
+  var key = '';
+  for(var i = 1; i < str.length; i ++) {
+    var val = str.charCodeAt(i);
+    var preVal = str.charCodeAt(i - i);
 
-  // ascii code for a
-  var charA = 'a'.charCodeAt(0);
-  // ascii code for z
-  var charZ = 'z'.charCodeAt(0);
-
-  var distance = str.charCodeAt(0) - charA;
-  var arr = str.split('');
-  for (var i = 0; i < arr.length; i ++) {
-    var val = arr[i].charCodeAt(0);
-
-    if (val - distance < charA) {
-      val = charZ + 1 - (charA - (val - distance));
-    } else {
-       val = val - distance;
+    var d = val - preVal;
+    if (val < preVal) {
+      d = val - preVal + 26;
     }
 
-    arr[i] = String.fromCharCode(val);
+    // distance could be `11`, need to distinguish with `'1'` + `'1'`
+    key += '-' + d;
   }
 
-  return arr.join('');
+  return key;
 }
-
 
 var eq = require('assert').deepEqual;
 
@@ -60,3 +51,7 @@ eq(groupStrings(['abc', 'bcd', 'acef', 'xyz', 'az', 'ba', 'a', 'z']), [
   ['a','z']
 ]);
 
+eq(groupStrings(['abc','am']), [
+   ['abc'],
+   ['am']
+]);
