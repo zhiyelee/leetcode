@@ -17,6 +17,3 @@ npm test
 ## LICENSE
 MIT
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zhiyelee/leetcode/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
