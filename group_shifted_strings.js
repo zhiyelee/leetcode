@@ -28,12 +28,12 @@ function getKey(str) {
   if (str.charAt(0) == 'a') return str;
 
   // ascii code for a
-  var charA = 97;
+  var charA = 'a'.charCodeAt(0);
   // ascii code for z
-  var charZ = 122;
-  var distance = str.charCodeAt(0) - 97;
-  var arr = str.split('');
+  var charZ = 'z'.charCodeAt(0);
 
+  var distance = str.charCodeAt(0) - charA;
+  var arr = str.split('');
   for (var i = 0; i < arr.length; i ++) {
     var val = arr[i].charCodeAt(0);
 
