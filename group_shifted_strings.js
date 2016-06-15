@@ -25,21 +25,28 @@ var groupStrings = function(strings) {
  * serialize `str` to get it start with `a`
  * */
 function getKey(str) {
-  while (str.charAt(0) !== 'a') {
-    var arr = str.split('');
+  if (str.charAt(0) == 'a') return str;
 
-    for (var i = 0; i < arr.length; i ++) {
-      if (arr[i] === 'a') {
-        arr[i] = 'z';
-      } else {
-        arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
-      }
+  // ascii code for a
+  var charA = 97;
+  // ascii code for z
+  var charZ = 122;
+  var distance = str.charCodeAt(0) - 97;
+  var arr = str.split('');
+
+  for (var i = 0; i < arr.length; i ++) {
+    var val = arr[i].charCodeAt(0);
+
+    if (val - distance < charA) {
+      val = charZ + 1 - (charA - (val - distance));
+    } else {
+       val = val - distance;
     }
 
-    str = arr.join('');
+    arr[i] = String.fromCharCode(val);
   }
 
-  return str;
+  return arr.join('');
 }
 
 
