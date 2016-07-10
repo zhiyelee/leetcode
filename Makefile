@@ -1,5 +1,5 @@
 
-TESTS = $(shell find *.js)
+TESTS = $(shell find js -name '*.js')
 
 test:
 	@./runTest $(TESTS)
