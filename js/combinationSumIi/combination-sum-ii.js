@@ -23,12 +23,12 @@ function getSolution(current, arr, target, result) {
   for (var i = 0; i < len; i++) {
     var val = arr[i];
     var newCurrent = [].concat(current, [val]);
+
     if (val > target) break;
     if (hash[val]) continue;
 
     if (val === target) {
        result.push(newCurrent);
-       break;
     } else {
       getSolution(newCurrent, arr.slice(i + 1), target - val, result)
     }
@@ -40,4 +40,9 @@ function getSolution(current, arr, target, result) {
 
 const eq = require('assert').deepEqual;
 
-console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8))
+eq(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8), [
+  [ 1, 1, 6  ],
+  [ 1, 2, 5  ],
+  [ 1, 7  ],
+  [ 2, 6]
+]);
