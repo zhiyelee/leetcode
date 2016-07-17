@@ -14,6 +14,26 @@ npm i
 npm test
 ```
 
+## Tools
+
+### Create problem folder
+
+```
+npm i
+
+# pass the problem url as an argument
+./bin/load https://leetcode.com/problems/combination-sum/
+```
+
+which will create folder `js/combinationSum` with two files.
+
+```
+➜  leetcode git:(master) ✗ tree js/combinationSum
+js/combinationSum
+├── README.md  # contains problem description and link to the problem
+└── combination-sum.js # empty file
+```
+
 ## LICENSE
 MIT
 

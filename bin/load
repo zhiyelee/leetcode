@@ -1,0 +1,30 @@
+#! /usr/bin/env node
+'use strict';
+var request = require('request');
+var cheerio = require('cheerio');
+var fs = require('fs');
+var camelCase = require('camelcase');
+var mkdirp = require('mkdirp');
+var url = require('url');
+const path = require('path');
+
+const problemUrl = process.argv[2];
+
+var doc = request.get(problemUrl, (err, response, body) => {
+
+  const $ = cheerio.load(body);
+
+  const title = $('title').text().split('|')[0];
+  let content = $('meta[name=description]').attr('content');
+
+  // problem slug, such as `combination-sum`
+  const slug = url.parse(problemUrl).pathname.split('/')[2];
+  const dirPath = path.resolve('js', camelCase(slug));
+
+  mkdirp(dirPath, function () {
+    const fileContent = `## ${title}\n` + `link: <${problemUrl}>\n` + `${content}`;
+
+    fs.writeFileSync(path.resolve(dirPath,'README.md'), fileContent);
+    fs.writeFileSync(path.resolve(dirPath,`${slug}.js`), '');
+  });
+});

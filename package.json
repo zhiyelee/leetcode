@@ -3,6 +3,12 @@
     "leetcode": "^1.2.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "load": "./bin/load bin/loadProblem.js"
+  },
+  "devDependencies": {
+    "cheerio": "^0.20.0",
+    "mkdirp": "^0.5.1",
+    "request": "^2.73.0"
   }
 }
