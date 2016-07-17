@@ -2,6 +2,6 @@
 TESTS = $(shell find js -name '*.js')
 
 test:
-	@./runTest $(TESTS)
+	@./bin/runTest $(TESTS)
 
 .PHONY: test
