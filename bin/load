@@ -1,16 +1,17 @@
 #! /usr/bin/env node
 'use strict';
-var request = require('request');
-var cheerio = require('cheerio');
-var fs = require('fs');
-var camelCase = require('camelcase');
-var mkdirp = require('mkdirp');
-var url = require('url');
+const request = require('request');
+const cheerio = require('cheerio');
+const fs = require('fs');
+const camelCase = require('camelcase');
+const mkdirp = require('mkdirp');
+const url = require('url');
 const path = require('path');
+const chalk = require('chalk');
 
 const problemUrl = process.argv[2];
 
-var doc = request.get(problemUrl, (err, response, body) => {
+request.get(problemUrl, (err, response, body) => {
 
   const $ = cheerio.load(body);
 
@@ -20,11 +21,26 @@ var doc = request.get(problemUrl, (err, response, body) => {
   // problem slug, such as `combination-sum`
   const slug = url.parse(problemUrl).pathname.split('/')[2];
   const dirPath = path.resolve('js', camelCase(slug));
+  content = content.replace(/(\r\n|\r|\n)/gm, '\n');
 
   mkdirp(dirPath, function () {
     const fileContent = `## ${title}\n` + `link: <${problemUrl}>\n` + `${content}`;
 
-    fs.writeFileSync(path.resolve(dirPath,'README.md'), fileContent);
-    fs.writeFileSync(path.resolve(dirPath,`${slug}.js`), '');
+    createFile(path.resolve(dirPath,'README.md'), fileContent);
+    createFile(path.resolve(dirPath,`${slug}.js`), '');
   });
 });
+
+// create file with content only when file is not exists
+function createFile(f, content) {
+  fs.access(f, (err) => {
+    const relativePath = chalk.green(path.relative(__dirname + '/../', f));
+    if (err) {
+      fs.writeFileSync(f, content);
+      console.log(`Create:\n\t ${relativePath}`);
+      return;
+    }
+
+    console.log(`${chalk.red.bold('File already exists:')}\n\t ${relativePath}`);
+  })
+}
