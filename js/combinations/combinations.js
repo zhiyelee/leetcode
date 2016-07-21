@@ -30,7 +30,7 @@ function getSolution(current, begin, n, k, result) {
   }
 }
 
-var eq = require('assert').equal;
+var eq = require('assert').deepEqual;
 
 eq(combine(4, 2), [
   [1, 2],
