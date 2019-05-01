@@ -18,6 +18,8 @@ npm test
 
 ### Create problem folder
 
+The folder will include an empty js file and a README file which contains the problem description
+
 ```
 npm i
 
