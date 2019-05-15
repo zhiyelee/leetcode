@@ -8,7 +8,7 @@ var subsetsWithDup = function(nums) {
 
 function getSolutions(nums, list) {
   if (nums.length === 0) {
-    return [1];
+    return [];
   }
 
   var resNext = getSolutions(nums.slice(1), list);
@@ -34,3 +34,6 @@ function getSolutions(nums, list) {
 console.log(subsetsWithDup([1, 2, 2]))
 
 var eq = require('assert').deepEqual;
+eq(subsetsWithDup([1, 2, 2]), [[2], [1], [1,2,2], [2,2], [1,2], []]);
+
+eq(subsetsWithDup([1, 1, 2, 2]), [[],[1],[1,1],[1,1,2],[1,1,2,2],[1,2],[1,2,2],[2],[2,2]]);
