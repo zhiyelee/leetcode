@@ -8,7 +8,7 @@ var subsetsWithDup = function(nums) {
 
 function getSolutions(nums, list) {
   if (nums.length === 0) {
-    return [];
+    return [1];
   }
 
   var resNext = getSolutions(nums.slice(1), list);
