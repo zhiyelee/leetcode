@@ -9,8 +9,7 @@ Note: The solution set must not contain duplicate subsets.
 For example,
 If nums = [1,2,3], a solution is:
 
-
-
+```
 [
   [3],
   [1],
@@ -21,3 +20,5 @@ If nums = [1,2,3], a solution is:
   [1,2],
   []
 ]
+
+```
