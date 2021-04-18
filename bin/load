@@ -15,7 +15,7 @@ const slug = url.parse(problemUrl).pathname.split('/')[2];
 const dirPath = path.resolve('js', camelCase(slug));
 
 mkdirp(dirPath, function () {
-  const fileContent = `## ${slug.replace('-', ' ')}\n` + `link: <${problemUrl}>\n`;
+  const fileContent = `## ${slug.replace(/-/g, ' ')}\n` + `link: <${problemUrl}>\n`;
 
   createFile(path.resolve(dirPath,'README.md'), fileContent);
   createFile(path.resolve(dirPath,`${slug}.js`), '');
