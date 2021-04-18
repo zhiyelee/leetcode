@@ -21,10 +21,10 @@ npm test
 The folder will include an empty js file and a README file which contains the problem description.
 
 ```
-npm i
+yarn
 
 # pass the problem url as an argument
-./bin/load https://leetcode.com/problems/combination-sum/
+yarn load https://leetcode.com/problems/combination-sum/
 ```
 
 which will create folder `js/combinationSum` with two files.

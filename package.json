@@ -7,6 +7,7 @@
     "load": "./bin/load bin/loadProblem.js"
   },
   "devDependencies": {
+    "camelcase": "^6.2.0",
     "chalk": "^1.1.3",
     "cheerio": "^0.20.0",
     "mkdirp": "^0.5.1",

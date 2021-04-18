@@ -9,7 +9,7 @@ const url = require('url');
 const path = require('path');
 const chalk = require('chalk');
 
-const problemUrl = process.argv[2];
+const problemUrl = process.argv[3];
 
 request.get(problemUrl, (err, response, body) => {
 
